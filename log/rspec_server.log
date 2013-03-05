@@ -1,0 +1,26 @@
+[2013-03-05 15:36:55] INFO  WEBrick 1.3.1
+[2013-03-05 15:36:55] INFO  ruby 1.9.3 (2013-02-22) [x86_64-darwin12.2.0]
+== Sinatra/1.3.5 has taken the stage on 8083 for development with backup from WEBrick
+[2013-03-05 15:36:55] INFO  WEBrick::HTTPServer#start: pid=51710 port=8083
+127.0.0.1 - - [05/Mar/2013 15:36:55] "GET / HTTP/1.1" 200 - 0.0022
+localhost - - [05/Mar/2013:15:36:55 CET] "GET / HTTP/1.1" 200 0
+- -> /
+127.0.0.1 - - [05/Mar/2013 15:36:55] "DELETE / HTTP/1.1" 200 - 0.0003
+localhost - - [05/Mar/2013:15:36:55 CET] "DELETE / HTTP/1.1" 200 0
+- -> /
+127.0.0.1 - - [05/Mar/2013 15:36:55] "POST /remember HTTP/1.1" 200 21 0.0003
+localhost - - [05/Mar/2013:15:36:55 CET] "POST /remember HTTP/1.1" 200 21
+- -> /remember
+127.0.0.1 - - [05/Mar/2013 15:36:55] "GET /remembered HTTP/1.1" 200 40 0.0003
+localhost - - [05/Mar/2013:15:36:55 CET] "GET /remembered HTTP/1.1" 200 40
+- -> /remembered
+127.0.0.1 - - [05/Mar/2013 15:36:55] "DELETE / HTTP/1.1" 200 - 0.0002
+localhost - - [05/Mar/2013:15:36:55 CET] "DELETE / HTTP/1.1" 200 0
+- -> /
+127.0.0.1 - - [05/Mar/2013 15:36:55] "GET /remembered HTTP/1.1" 200 17 0.0002
+localhost - - [05/Mar/2013:15:36:55 CET] "GET /remembered HTTP/1.1" 200 17
+- -> /remembered
+
+== Sinatra has ended his set (crowd applauds)
+[2013-03-05 15:36:57] INFO  going to shutdown ...
+[2013-03-05 15:36:57] INFO  WEBrick::HTTPServer#start done.
