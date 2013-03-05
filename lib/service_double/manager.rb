@@ -18,9 +18,10 @@ module ServiceDouble
 
     def_delegators :connection, :get, :post, :head, :delete, :put, :patch
 
-    attr_reader :root_url, :log_file, :started_at, :timeout, :server, :name
+    attr_reader :config, :root_url, :log_file, :started_at, :timeout, :server, :name
 
     def initialize(config)
+      @config   = config
       @root_url = config.url
       @log_file = config.log_file
       @timeout  = config.timeout
@@ -32,7 +33,7 @@ module ServiceDouble
       FileUtils.mkdir_p(File.dirname(log_file)) if log_file.is_a?(String)
       args = %w(ruby -r sinatra -r json) << server << "-p" << port
       args << { :out => log_file, :err => log_file }
-      @pid = Process.spawn(*args)
+      @pid = Process.spawn(env, *args)
       @started_at = Time.now
       wait until up?
     end
@@ -86,6 +87,14 @@ module ServiceDouble
         faraday.request :url_encoded
         faraday.adapter Faraday.default_adapter
       }
+    end
+
+    def env
+      if config.disable_bundler
+        {"RUBYOPT" => "", "BUNDLE_BIN_PATH" => "", "BUNDLE_GEM_PATH" => ""}
+      else
+        {}
+      end
     end
 
   end

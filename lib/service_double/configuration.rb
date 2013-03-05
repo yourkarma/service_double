@@ -6,13 +6,14 @@ module ServiceDouble
 
   class Configuration
 
-    attr_accessor :url, :log_file, :timeout, :server
+    attr_accessor :url, :log_file, :timeout, :server, :disable_bundler
 
     def initialize
       @url = nil
       @server = nil
       @log_file = nil
       @timeout = 2
+      @disable_bundler = true
     end
 
     def url
