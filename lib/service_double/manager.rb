@@ -24,7 +24,7 @@ module ServiceDouble
       @config   = config
       @root_url = config.url
       @log_file = config.log_file
-      @timeout  = config.timeout
+      @timeout  = config.timeout.to_f
       @server   = config.server
       @name     = config.name
     end
@@ -55,7 +55,7 @@ module ServiceDouble
 
     def wait
       unless timed_out?
-        sleep 0.01
+        sleep 0.2
       else
         raise Timeout, "It took more than #{timeout} seconds to start #{name}. Check the logs at #{log_file} to see why."
       end
@@ -78,7 +78,7 @@ module ServiceDouble
     end
 
     def timed_out?
-      Time.now - timeout > started_at
+      Time.now - started_at > timeout
     end
 
     def connection

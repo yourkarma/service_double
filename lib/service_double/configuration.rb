@@ -12,7 +12,7 @@ module ServiceDouble
       @url = nil
       @server = nil
       @log_file = nil
-      @timeout = 2
+      @timeout = 5
       @disable_bundler = true
     end
 
